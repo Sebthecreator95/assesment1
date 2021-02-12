@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+
+{% block title %}Currency Converter{% endblock %}
+
+{% block content %}
+<h1>Convert your money!</h1>
+<form action="/converted" method="POST">
+<p> Select Currency: </p>
+<select name= "currency_type" id="currency_type">
+{% for currency in currencies.keys() %}
+<option value="{{currency}}">{{get(currency)}}</option>
+{% endfor %}
+</select>
+<select name= "converted_currency" id="converted_currency">
+    {% for currency in currencies.keys() %}
+    <option value="{{currency}}">{{get(currency)}}</option>
+    {% endfor %}
+    </select>
+    <label>Amount</label>
+    <input type="text" placeholder="0.00" id="amount" name="amount"></input>
+  <button>Go!</button>
+</form>
+
+
+
+
+
+
+{% endblock %}
