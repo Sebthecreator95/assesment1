@@ -8,12 +8,12 @@
 <p> Select Currency: </p>
 <select name= "currency_type" id="currency_type">
 {% for currency in currencies.keys() %}
-<option value="{{currency}}">{{get(currency)}}</option>
+<option value="{{currency}}">{{currency}}</option>
 {% endfor %}
 </select>
 <select name= "converted_currency" id="converted_currency">
     {% for currency in currencies.keys() %}
-    <option value="{{currency}}">{{get(currency)}}</option>
+    <option value="{{currency}}">{{currency}}</option>
     {% endfor %}
     </select>
     <label>Amount</label>
@@ -21,9 +21,11 @@
   <button>Go!</button>
 </form>
 
-
-
-
+<ul name = "currency_types">
+    {% for currency in currencies.items() %}
+    <li>{{currency}}</li>
+    {% endfor %}
+</ul>
 
 
 {% endblock %}
