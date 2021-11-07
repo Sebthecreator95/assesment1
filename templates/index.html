@@ -6,19 +6,19 @@
         content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
   <meta http-equiv='X-UA-Compatible' content='ie=edge'>
   <title>{% block title %}{% endblock %}</title>
-  <link rel='stylesheet' href='/static/app.css'>
+  <link rel="stylesheet" href="/static/app.css">
 </head>
 <body>
 
 <main>
+  <center>
     <section class ='messages'>
         {% for category, msg in get_flashed_messages(with_categories= true) %}
         <p class = '{{category}}'>{{msg}}</p>
         {% endfor %}
     </section>
   {% block content %}{% endblock %}
+  </center>
 </main>
-<script rel='stylesheet' href = '/static/app.js'></script>
-<script rel='stylesheet' href = '/static/app.css'></script>
 </body>
 </html>

@@ -1,29 +1,32 @@
 {% extends 'index.html' %}
 
 {% block title %}Currency Converter{% endblock %}
-
 {% block content %}
-<h1>Convert your money!</h1>
-<form action="/converted" method="POST">
-<p> Select Currency: </p>
-<select name= "currency_type" id="currency_type">
-{% for currency in currencies.keys() %}
-<option value="{{currency}}">{{currency}}</option>
-{% endfor %}
-</select>
-<select name= "converted_currency" id="converted_currency">
-    {% for currency in currencies.keys() %}
-    <option value="{{currency}}">{{currency}}</option>
-    {% endfor %}
-    </select>
-    <label>Amount</label>
-    <input type="text" placeholder="0.00" id="amount" name="amount"></input>
-  <button>Go!</button>
-</form>
+<h1 class="title">Convert your money!</h1>
+<div class="form-container">
+<form method="POST" id="conversion_form">
+  {{ form.hidden_tag() }}
 
+  {% for field in form if field.widget.input_type != 'hidden' %}
+  <div class="form-control">
+    {% for error in field.errors %}
+    <div class="field-errors ">
+      <span class="text-danger">{{ error }}</span>
+    </div>
+    {% endfor %}
+    <div>
+    <label>{{ field.label.text}}</label>
+      {{ field(placeholder=field.label.text, class="input") }}
+    </div>
+  </div>
+  {% endfor %}
+
+  <button class="btn btn-primary btn-block btn-lg">Convert</button>
+</form>
+</div>
 <ul name = "currency_types">
     {% for currency in currencies.items() %}
-    <li>{{currency}}</li>
+    <div class ="currency">{{currency}}</div>
     {% endfor %}
 </ul>
 
