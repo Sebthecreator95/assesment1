@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, DecimalField
-from wtforms.validators import DataRequired, Length
+from wtforms.validators import Length
 
 
 class ConvertForm(FlaskForm):
